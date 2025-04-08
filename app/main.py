@@ -1,22 +1,23 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-from typing import List
+from typing import List, Optional
 from uuid import uuid4
 
 app = FastAPI()
+
 @app.get("/")
 def read_root():
     return {"message": "Hello, World!"}
-    
+
 class Task(BaseModel):
     title: str
     description: str
     status: str
 
 class TaskUpdate(BaseModel):
-    title: str = None
-    description: str = None
-    status: str = None
+    title: Optional[str] = None
+    description: Optional[str] = None
+    status: Optional[str] = None
 
 tasks = {}
 
