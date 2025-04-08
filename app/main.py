@@ -4,7 +4,10 @@ from typing import List
 from uuid import uuid4
 
 app = FastAPI()
-
+@app.get("/")
+def read_root():
+    return {"message": "Hello, World!"}
+    
 class Task(BaseModel):
     title: str
     description: str
